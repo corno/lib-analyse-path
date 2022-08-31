@@ -1,9 +1,9 @@
 {
   "dependencies": {
-    "lib-pareto-exe": "^0.2.1",
+    "lib-pareto-exe": "^0.2.2",
     "lib-pareto-test": "^0.1.0",
-    "pareto-core-exe": "^0.4.0",
-    "pareto-core-lib": "^0.6.0",
+    "pareto-core-exe": "^0.5.0",
+    "pareto-core-lib": "^0.7.0",
     "pareto-core-raw": "^0.2.0",
     "pareto-core-tostring": "^0.2.0",
     "res-pareto-diff": "^0.6.0",
