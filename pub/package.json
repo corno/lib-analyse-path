@@ -1,0 +1,21 @@
+{
+  "name": "lib-analyse-path",
+  "version": "0.0.0",
+  "description": "analyses a file system path against a specified expected filesystem structure",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "Corno",
+  "license": "ISC",
+  "dependencies": {
+    "api-pareto-path": "^0.3.0",
+    "pareto-core-lib": "^0.6.0",
+    "pareto-core-raw": "^0.2.0",
+    "pareto-core-resolve": "^0.2.0",
+    "pareto-core-state": "^0.6.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "interface-fingerprint": "9b591e6515f3e4a66172b9480f9f7228347795a7",
+  "content-fingerprint": "b4c64ee55880ab58c5280c44e1e5df2ded3bc16f"
+}

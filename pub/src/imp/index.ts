@@ -1,0 +1,2 @@
+
+export { analysePath } from "./analysePath"
