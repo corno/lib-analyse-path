@@ -8,17 +8,15 @@ import * as diff from "res-pareto-diff"
 import * as fs from "res-pareto-filesystem"
 
 import { createGetTestSet } from "../imp/createGetTestSet"
-import { getDepedencies } from "./getDependencies"
+import { dependencies } from "./dependencies"
 
-
-const getTestSet = createGetTestSet(
-    getDepedencies()
-)
 
 pe.runProgram(
     test.createTester(
         {
-            getTestSet: getTestSet,
+            getTestSet: createGetTestSet(
+                dependencies
+            ),
             diff: {
                 diffData: diff.diffData,
                 stringsAreEqual: diff.stringsAreEqual,
