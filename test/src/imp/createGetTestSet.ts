@@ -6,7 +6,7 @@ import * as pts from "pareto-core-tostring"
 
 import * as test from "lib-pareto-test"
 
-import * as pub from "../../../pub/dist"
+import * as pub from "../../../pub"
 
 import * as path from "api-pareto-path"
 
