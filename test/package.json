@@ -6,8 +6,8 @@
     "pareto-core-lib": "^0.8.0",
     "pareto-core-raw": "^0.2.0",
     "pareto-core-tostring": "^0.3.0",
-    "res-pareto-diff": "^0.8.0",
-    "res-pareto-filesystem": "^0.22.0",
-    "res-pareto-path": "^0.7.0"
+    "res-pareto-diff": "^0.9.0",
+    "res-pareto-filesystem": "^0.23.0",
+    "res-pareto-path": "^0.8.0"
   }
 }
