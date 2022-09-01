@@ -9,6 +9,6 @@ git diff --exit-code && git log origin/master..master --exit-code && \
 
 "$scriptDir/update2latestBuildEnvironment.sh" && \
 "$scriptDir/update2latestDependencies.sh" && \
-"$scriptDir/buildAndTest.sh" && \
+"$scriptDir/buildAndTest.sh" "$rootDir" && \
 git commit -am "u2l" && \
 "$scriptDir/publish.sh" "$generation"

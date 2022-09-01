@@ -18,7 +18,7 @@ git diff --exit-code && git log origin/master..master --exit-code && \
 "$scriptDir/update2latestDependencies.sh" && \
 
 #buildAndTest
-"$scriptDir/buildAndTest.sh" && \
+"$scriptDir/buildAndTest.sh" "$rootDir" && \
 
 #validate that everything is still committed after the update and build
 git diff --exit-code && git log origin/master..master --exit-code && \
