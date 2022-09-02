@@ -12,11 +12,11 @@
     "pareto-core-raw": "^0.2.0",
     "pareto-core-resolve": "^0.2.0",
     "pareto-core-state": "^0.6.0",
-    "pareto-core-tostring": "^0.3.0"
+    "pareto-core-tostring": "^0.4.0"
   },
   "files": [
     "dist"
   ],
   "interface-fingerprint": "3c40f220c2552b7bd324f6933ad3556303402d2e",
-  "content-fingerprint": "1c858f1b8cba8f68705d531b78de920a6f596c38"
+  "content-fingerprint": "71cea0b779ed0d79fa98b70596903c733a31f235"
 }
