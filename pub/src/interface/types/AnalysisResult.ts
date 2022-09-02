@@ -11,11 +11,15 @@ export type PathError =
     | ["unexpected file", {}]
     | ["expected directory instead of file", {}]
 
+export type Path = pt.Array<string>
+
+export type AnnotatedPathError = {
+    error: PathError,
+    path: null | Path
+}
+
 export type TAnalysisResult =
-    | ["error", {
-        error: PathError,
-        path: null | pt.Array<string>
-    }]
+    | ["error", AnnotatedPathError]
     | ["success", {
         pattern: pt.Array<string>
     }]

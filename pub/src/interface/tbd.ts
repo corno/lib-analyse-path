@@ -1,6 +1,6 @@
 import { TDirectory } from "./types/FileSystemStructure"
 import { TParsedFilePath } from "api-pareto-path"
-import { TAnalysisResult } from "./types/AnalysisResult"
+import { AnnotatedPathError, Path, PathError, TAnalysisResult } from "./types/AnalysisResult"
 
 export type AnalysePath = (
     $: {
@@ -8,3 +8,8 @@ export type AnalysePath = (
         filePath: TParsedFilePath
     },
 ) => TAnalysisResult
+
+
+export type CreatePathErrorMessage = ($: PathError) => string
+export type CreatePathMessage = ($: Path) => string
+export type CreateAnnotatedPathErrorMessage = ($: AnnotatedPathError) => string
