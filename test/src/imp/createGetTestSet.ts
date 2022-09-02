@@ -66,7 +66,7 @@ export function createGetTestSet(
                             }]
                         })
                         if (expectedPath === null) {
-                            if ($.path !== null) {
+                            if (pl.isNotNull($.path)) {
                                 testsBuilder.add("unexpected path", {
                                     type: ["test", {
                                         type: ["boolean", {
@@ -84,7 +84,7 @@ export function createGetTestSet(
                                 })
                             }
                         } else {
-                            if ($.path !== null) {
+                            if (pl.isNotNull($.path)) {
                                 testsBuilder.add("path", {
                                     type: ["test", {
                                         type: ["simple string", {
