@@ -8,7 +8,7 @@ import * as diff from "res-pareto-diff"
 import * as fs from "res-pareto-filesystem"
 
 import { createGetTestSet } from "../imp/public/createGetTestSet"
-import { dependencies } from "./dependencies"
+import { dependencies } from "../dependencies/dependencies"
 
 
 pe.runProgram(
