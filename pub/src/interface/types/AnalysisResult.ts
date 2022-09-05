@@ -1,7 +1,7 @@
 import * as pt from "pareto-core-types"
 
 
-export type PathError =
+export type TPathError =
     | ["unexpected missing extension", {}]
     | ["expected directory (any name)", {}]
     | ["unexpected extension", {}]
@@ -11,15 +11,15 @@ export type PathError =
     | ["unexpected file", {}]
     | ["expected directory instead of file", {}]
 
-export type Path = pt.Array<string>
+export type TPath = pt.Array<string>
 
-export type AnnotatedPathError = {
-    error: PathError,
-    path: null | Path
+export type TAnnotatedPathError = {
+    readonly "error": TPathError,
+    readonly "path": TPath
 }
 
 export type TAnalysisResult =
-    | ["error", AnnotatedPathError]
+    | ["error", TAnnotatedPathError]
     | ["success", {
-        pattern: pt.Array<string>
+     readonly   "pattern": pt.Array<string>
     }]

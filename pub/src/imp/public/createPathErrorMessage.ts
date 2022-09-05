@@ -1,7 +1,7 @@
 import * as pl from "pareto-core-lib"
 
-import * as api from "../interface"
-export const createPathErrorMessage: api.CreatePathErrorMessage = ($) => {
+import * as api from "../../interface"
+export const createPathErrorMessage: api.FCreatePathErrorMessage = ($) => {
 
     switch ($[0]) {
         case "did not expect a directory":

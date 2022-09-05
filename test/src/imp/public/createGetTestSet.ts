@@ -6,12 +6,12 @@ import * as pts from "pareto-core-tostring"
 
 import * as testLib from "lib-pareto-test"
 
-import * as pub from "../../../pub"
+import * as pub from "../../../../pub/dist"
 
 import * as path from "api-pareto-path"
 
-import { _testProject } from "../data/testProject"
-import { createPathErrorMessage } from "../../../pub"
+import { _testProject } from "../../data/testProject"
+import { createPathErrorMessage } from "../../../../pub/dist"
 
 
 export function createGetTestSet(
@@ -34,7 +34,7 @@ export function createGetTestSet(
         function testError(
             pathString: string,
             expectedError: string,
-            expectedPath: string | null,
+            expectedPath: string,
         ) {
             const testsBuilder = pm.createDictionaryBuilder<testLib.TTestElement>(
                 ["ignore", {}],
@@ -65,45 +65,15 @@ export function createGetTestSet(
                                 }]
                             }]
                         })
-                        if (expectedPath === null) {
-                            if (pl.isNotNull($.path)) {
-                                testsBuilder.add("unexpected path", {
-                                    type: ["test", {
-                                        type: ["boolean", {
-                                            test: false,
-                                        }]
-                                    }]
-                                })
-                            } else {
-                                testsBuilder.add("no path", {
-                                    type: ["test", {
-                                        type: ["boolean", {
-                                            test: true,
-                                        }]
-                                    }]
-                                })
-                            }
-                        } else {
-                            if (pl.isNotNull($.path)) {
-                                testsBuilder.add("path", {
-                                    type: ["test", {
-                                        type: ["simple string", {
-                                            expected: expectedPath,
-                                            actual: pub.createPathMessage($.path),
-                                        }]
-                                    }]
-                                })
 
-                            } else {
-                                testsBuilder.add("missing path", {
-                                    type: ["test", {
-                                        type: ["boolean", {
-                                            test: false,
-                                        }]
-                                    }]
-                                })
-                            }
-                        }
+                        testsBuilder.add("path", {
+                            type: ["test", {
+                                type: ["simple string", {
+                                    expected: expectedPath,
+                                    actual: pub.createPathMessage($.path),
+                                }]
+                            }]
+                        })
                     })
                     break
                 case "success":
@@ -183,13 +153,13 @@ export function createGetTestSet(
         }
 
         testError("f.txt/x.txt", "expected file instead of directory", "f.txt")
-        testError("foo", "unexpected file", null)
+        testError("foo", "unexpected file", "foo")
         testError("foo/bar", "unexpected directory", "foo")
-        testError("ddd", "expected directory instead of file", null)
-        testError("ddd/f.txt", "expected directory (any name)", null)
-        testError("ddd/x/y.txt", "unexpected file", null)
-        testError("td/y.txt", "unexpected file", null)
-        testError("fdd/y.foo", "unexpected extension", null)
+        testError("ddd", "expected directory instead of file", "ddd")
+        testError("ddd/f.txt", "expected directory (any name)", "ddd/f.txt")
+        testError("ddd/x/y.txt", "unexpected file", "ddd/x/y.txt")
+        testError("td/y.txt", "unexpected file", "td/y.txt")
+        testError("fdd/y.foo", "unexpected extension", "fdd/y.foo")
         testError("fddnr/a/y.txt", "did not expect a directory", "fddnr/a")
 
         testSuccess("f.txt", "/f.txt")

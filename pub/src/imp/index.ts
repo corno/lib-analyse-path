@@ -1,6 +1,6 @@
 
-export * from "./analysePath"
+export * from "./public/analysePath"
 
-export * from "./createPathErrorMessage"
-export * from "./createPathMessage"
-export * from "./createAnnotatedPathErrorMessage"
+export * from "./public/createPathErrorMessage"
+export * from "./public/createPathMessage"
+export * from "./public/createAnnotatedPathErrorMessage"

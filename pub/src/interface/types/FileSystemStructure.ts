@@ -1,4 +1,4 @@
-
+import * as pt from "pareto-core-types"
 export type TNode = {
     readonly "type":
     | ["file", {}]
@@ -6,12 +6,12 @@ export type TNode = {
 }
 
 export type TTypeDirectory = {
-    readonly "nodes": { [key: string]: TNode }
+    readonly "nodesX": pt.Dictionary<TNode>
 }
 
 export type TFilesDictionary = {
     readonly "allow missing extension": boolean
-    readonly "extensions": string[]
+    readonly "extensionsX": pt.Array<string>
     readonly "recursive": boolean
 }
 

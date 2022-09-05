@@ -1,19 +1,21 @@
+import * as pw from "pareto-core-raw"
+
 import * as ap from "../../../pub"
 
 export const _testProject: ap.TDirectory = {
     'type': ["type", {
-        'nodes': {
+        'nodesX': pw.wrapRawDictionary<ap.TNode>({
             "f.txt": {
                 'type': ["file", {}],
             },
             "td": {
                 'type': ["directory", {
                     'type': ["type", {
-                        'nodes': {
+                        'nodesX': pw.wrapRawDictionary({
                             "f.txt": {
                                 'type': ["file", {}],
                             }
-                        }
+                        })
                     }]
                 }]
             },
@@ -22,11 +24,11 @@ export const _testProject: ap.TDirectory = {
                     "type": ["directory dictionary", {
                         "definition": {
                             "type": ["type", {
-                                'nodes': {
+                                'nodesX': pw.wrapRawDictionary({
                                     "f.txt": {
                                         'type': ["file", {}]
                                     }
-                                }
+                                })
                             }]
                         }
                     }]
@@ -36,7 +38,7 @@ export const _testProject: ap.TDirectory = {
                 'type': ["directory", {
                     "type": ["files dictionary", {
                         "allow missing extension": false,
-                        "extensions": ([`txt`]),
+                        "extensionsX": pw.wrapRawArray([`txt`]),
                         'recursive': true,
                     }]
                 }]
@@ -45,11 +47,11 @@ export const _testProject: ap.TDirectory = {
                 'type': ["directory", {
                     "type": ["files dictionary", {
                         "allow missing extension": false,
-                        "extensions": ([`txt`]),
+                        "extensionsX": pw.wrapRawArray([`txt`]),
                         'recursive': false,
                     }]
                 }]
             },
-        },
+        }),
     }],
 }
