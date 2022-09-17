@@ -2,14 +2,14 @@ import * as pt from "pareto-core-types"
 
 
 export type TPathError =
-    | ["unexpected missing extension", {}]
-    | ["expected directory (any name)", {}]
-    | ["unexpected extension", {}]
-    | ["did not expect a directory", {}]
-    | ["unexpected directory", {}]
-    | ["expected file instead of directory", {}]
-    | ["unexpected file", {}]
-    | ["expected directory instead of file", {}]
+    | ["unexpected missing extension", null]
+    | ["expected directory (any name)", null]
+    | ["unexpected extension", null]
+    | ["did not expect a directory", null]
+    | ["unexpected directory", null]
+    | ["expected file instead of directory", null]
+    | ["unexpected file", null]
+    | ["expected directory instead of file", null]
 
 export type TPath = pt.Array<string>
 

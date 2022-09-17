@@ -12,8 +12,7 @@
     "pareto-core-raw": "^0.2.0",
     "pareto-core-resolve": "^0.2.0",
     "pareto-core-state": "^0.6.0",
-    "pareto-core-tostring": "^0.5.0"
-  },
+      },
   "files": [
     "dist"
   ],

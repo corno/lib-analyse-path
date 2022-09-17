@@ -6,14 +6,14 @@ export const _testProject: ap.TDirectory = {
     'type': ["type", {
         'nodesX': pw.wrapRawDictionary<ap.TNode>({
             "f.txt": {
-                'type': ["file", {}],
+                'type': ["file", null],
             },
             "td": {
                 'type': ["directory", {
                     'type': ["type", {
                         'nodesX': pw.wrapRawDictionary({
                             "f.txt": {
-                                'type': ["file", {}],
+                                'type': ["file", null],
                             }
                         })
                     }]
@@ -26,7 +26,7 @@ export const _testProject: ap.TDirectory = {
                             "type": ["type", {
                                 'nodesX': pw.wrapRawDictionary({
                                     "f.txt": {
-                                        'type': ["file", {}]
+                                        'type': ["file", null]
                                     }
                                 })
                             }]

@@ -1,6 +1,6 @@
-import { TDirectory } from "./types/FileSystemStructure"
+import { TDirectory } from "../types/FileSystemStructure"
 import { TParsedFilePath } from "api-pareto-path"
-import { TAnnotatedPathError, TPath, TPathError, TAnalysisResult } from "./types/AnalysisResult"
+import { TAnnotatedPathError, TPath, TPathError, TAnalysisResult } from "../types/AnalysisResult"
 
 export type FAnalysePath = (
     $: {

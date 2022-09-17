@@ -19,7 +19,7 @@ import * as pm from "pareto-core-state"
 
 import * as api from "../../interface"
 
-export const analysePath: api.FAnalysePath = ($) => {
+export const f_analysePath: api.FAnalysePath = ($) => {
     const fileNameWithExtension = `${$.filePath.baseName}${$.filePath.extension === null ? "" : `.${$.filePath.extension}`}`
 
 
@@ -61,7 +61,7 @@ export const analysePath: api.FAnalysePath = ($) => {
                             pl.cc(processingState.currentDirectory.type[1], ($) => {
                                 if ($.recursive) {
                                 } else {
-                                    state = ["error", ["did not expect a directory", {}]]
+                                    state = ["error", ["did not expect a directory", null]]
                                 }
                             })
                             break
@@ -74,7 +74,7 @@ export const analysePath: api.FAnalysePath = ($) => {
                                         switch ($.type[0]) {
                                             case "file":
                                                 pl.cc($.type[1], ($) => {
-                                                    state = ["error", ["expected file instead of directory", {}]]
+                                                    state = ["error", ["expected file instead of directory", null]]
                                                 })
                                                 break
                                             case "directory":
@@ -87,7 +87,7 @@ export const analysePath: api.FAnalysePath = ($) => {
                                         }
                                     },
                                     () => {
-                                        state = ["error", ["unexpected directory", {}]]
+                                        state = ["error", ["unexpected directory", null]]
                                     }
                                 )
 
@@ -127,7 +127,7 @@ export const analysePath: api.FAnalysePath = ($) => {
                     case "directory dictionary":
                         return pl.cc(ps.currentDirectory.type[1], ($) => {
                             return ["error", {
-                                error: ["expected directory (any name)", {}],
+                                error: ["expected directory (any name)", null],
                                 path: fullPath
                             }]
                         })
@@ -143,14 +143,14 @@ export const analysePath: api.FAnalysePath = ($) => {
                                     return ["success", { pattern: pathPatternBuilder.getArray() }]
                                 } else {
                                     return ["error", {
-                                        error: ["unexpected missing extension", {}],
+                                        error: ["unexpected missing extension", null],
                                         path: fullPath
                                     }]
                                 }
                             } else {
                                 pathPatternBuilder.push(`*.${filePath.extension}`)
                                 const exts = pm.createDictionaryBuilder<null>(
-                                    ["ignore", {}],
+                                    ["ignore", null],
                                     () => {
                                         pl.panic("extension not unique")
                                     }
@@ -169,7 +169,7 @@ export const analysePath: api.FAnalysePath = ($) => {
                                     },
                                     () => {
                                         return ["error", {
-                                            error: ["unexpected extension", {}],
+                                            error: ["unexpected extension", null],
                                             path: fullPath
                                         }]
 
@@ -195,7 +195,7 @@ export const analysePath: api.FAnalysePath = ($) => {
                                         case "directory":
                                             return pl.cc($.type[1], ($): api.TAnalysisResult => {
                                                 return ["error", {
-                                                    error: ["expected directory instead of file", {}],
+                                                    error: ["expected directory instead of file", null],
                                                     path: fullPath,
                                                 }]
                                             })
@@ -204,7 +204,7 @@ export const analysePath: api.FAnalysePath = ($) => {
                                 },
                                 (): api.TAnalysisResult => {
                                     return ["error", {
-                                        error: ["unexpected file", {}],
+                                        error: ["unexpected file", null],
                                         path: fullPath,
                                     }]
                                 }

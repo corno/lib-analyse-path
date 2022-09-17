@@ -2,29 +2,25 @@
 import * as pa from "pareto-core-async"
 import * as pm from "pareto-core-state"
 import * as pl from "pareto-core-lib"
-import * as pts from "pareto-core-tostring"
 
 import * as testLib from "lib-pareto-test"
 
-import * as pub from "../../../../pub/dist"
+import * as api from "../../interface"
 
-import * as path from "api-pareto-path"
+import * as pub from "../../../../pub"
+
 
 import { _testProject } from "../../data/testProject"
-import { createPathErrorMessage } from "../../../../pub/dist"
+import { createPathErrorMessage } from "../../../../pub"
 
+export const f_createGetTestset: api.FCreateGetTestset = ($d) => {
 
-export function createGetTestSet(
-    $d: {
-        parseFilePath: path.ParseFilePath
-    }
-): testLib.GetTestSet {
 
     return () => {
 
 
         const testSetsBuilder = pm.createDictionaryBuilder<testLib.TTestElement>(
-            ["ignore", {}],
+            ["ignore", null],
             () => {
                 pl.panic('testnames are not unique')
             }
@@ -37,7 +33,7 @@ export function createGetTestSet(
             expectedPath: string,
         ) {
             const testsBuilder = pm.createDictionaryBuilder<testLib.TTestElement>(
-                ["ignore", {}],
+                ["ignore", null],
                 () => {
                     pl.panic('testnames are not unique')
                 }
@@ -101,7 +97,7 @@ export function createGetTestSet(
             expectedPathPattern: string,
         ) {
             const testsBuilder = pm.createDictionaryBuilder<testLib.TTestElement>(
-                ["ignore", {}],
+                ["ignore", null],
                 () => {
                     pl.panic('testnames are not unique')
                 }
