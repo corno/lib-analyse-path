@@ -6,12 +6,12 @@ export type TNode = {
 }
 
 export type TTypeDirectory = {
-    readonly "nodesX": pt.Dictionary<TNode>
+    readonly "nodes": pt.Dictionary<TNode>
 }
 
 export type TFilesDictionary = {
     readonly "allow missing extension": boolean
-    readonly "extensionsX": pt.Array<string>
+    readonly "extensions": pt.Dictionary<null>
     readonly "recursive": boolean
 }
 

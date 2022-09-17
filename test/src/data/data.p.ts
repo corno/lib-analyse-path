@@ -1,17 +1,17 @@
 import * as pw from "pareto-core-raw"
 
-import * as ap from "../../../pub"
+import * as pub from "../../../pub"
 
-export const _testProject: ap.TDirectory = {
+export const data: pub.TDirectory = {
     'type': ["type", {
-        'nodesX': pw.wrapRawDictionary<ap.TNode>({
+        'nodes': pw.wrapRawDictionary<pub.TNode>({
             "f.txt": {
                 'type': ["file", null],
             },
             "td": {
                 'type': ["directory", {
                     'type': ["type", {
-                        'nodesX': pw.wrapRawDictionary({
+                        'nodes': pw.wrapRawDictionary({
                             "f.txt": {
                                 'type': ["file", null],
                             }
@@ -24,7 +24,7 @@ export const _testProject: ap.TDirectory = {
                     "type": ["directory dictionary", {
                         "definition": {
                             "type": ["type", {
-                                'nodesX': pw.wrapRawDictionary({
+                                'nodes': pw.wrapRawDictionary({
                                     "f.txt": {
                                         'type': ["file", null]
                                     }
@@ -38,7 +38,7 @@ export const _testProject: ap.TDirectory = {
                 'type': ["directory", {
                     "type": ["files dictionary", {
                         "allow missing extension": false,
-                        "extensionsX": pw.wrapRawArray([`txt`]),
+                        "extensions": pw.wrapRawDictionary({ 'txt': null }),
                         'recursive': true,
                     }]
                 }]
@@ -47,7 +47,7 @@ export const _testProject: ap.TDirectory = {
                 'type': ["directory", {
                     "type": ["files dictionary", {
                         "allow missing extension": false,
-                        "extensionsX": pw.wrapRawArray([`txt`]),
+                        "extensions": pw.wrapRawDictionary({ 'txt': null }),
                         'recursive': false,
                     }]
                 }]

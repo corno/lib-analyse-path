@@ -68,7 +68,7 @@ export const f_analysePath: api.FAnalysePath = ($) => {
                         case "type":
                             pl.cc(processingState.currentDirectory.type[1], ($) => {
                                 pr.getEntry(
-                                    $.nodesX,
+                                    $.nodes,
                                     stepID,
                                     ($) => {
                                         switch ($.type[0]) {
@@ -149,17 +149,9 @@ export const f_analysePath: api.FAnalysePath = ($) => {
                                 }
                             } else {
                                 pathPatternBuilder.push(`*.${filePath.extension}`)
-                                const exts = pm.createDictionaryBuilder<null>(
-                                    ["ignore", null],
-                                    () => {
-                                        pl.panic("extension not unique")
-                                    }
-                                )
-                                $.extensionsX.forEach(($) => {
-                                    exts.add($, null)
-                                })
+
                                 return pr.getEntry<null, api.TAnalysisResult>(
-                                    exts.getDictionary(),
+                                    $.extensions,
                                     filePath.extension,
                                     () => {
                                         return ["success", {
@@ -180,7 +172,7 @@ export const f_analysePath: api.FAnalysePath = ($) => {
                     case "type":
                         return pl.cc(ps.currentDirectory.type[1], ($) => {
                             return pr.getEntry(
-                                $.nodesX,
+                                $.nodes,
                                 fileNameWithExtension,
                                 ($): api.TAnalysisResult => {
                                     switch ($.type[0]) {

@@ -1,5 +1,4 @@
 
-import * as pa from "pareto-core-async"
 import * as pm from "pareto-core-state"
 import * as pl from "pareto-core-lib"
 
@@ -9,22 +8,13 @@ import * as api from "../../interface"
 
 import * as pub from "../../../../pub"
 
-
-import { _testProject } from "../../data/testProject"
-import { createPathErrorMessage } from "../../../../pub"
-
-export const f_createGetTestset: api.FCreateGetTestset = ($d) => {
+export const createGetTestset: api.FCreateGetTestset = ($, $d) => {
 
 
     return () => {
 
 
-        const testSetsBuilder = pm.createDictionaryBuilder<testLib.TTestElement>(
-            ["ignore", null],
-            () => {
-                pl.panic('testnames are not unique')
-            }
-        )
+        const testSetsBuilder = pm.createUnsafeDictionaryBuilder<testLib.TTestElement>()
 
 
         function testError(
@@ -32,19 +22,15 @@ export const f_createGetTestset: api.FCreateGetTestset = ($d) => {
             expectedError: string,
             expectedPath: string,
         ) {
-            const testsBuilder = pm.createDictionaryBuilder<testLib.TTestElement>(
-                ["ignore", null],
-                () => {
-                    pl.panic('testnames are not unique')
-                }
-            )
+            const testsBuilder = pm.createUnsafeDictionaryBuilder<testLib.TTestElement>()
 
-            const res = pub.analysePath(
+            const res = pub.f_analysePath(
                 {
-                    definition: _testProject,
+                    definition: $,
                     filePath: $d.parseFilePath(
                         {
-                            filePath: pathString
+                            filePath: pathString,
+                            pathSeparator: "/",
                         }
                     )
                 }
@@ -57,7 +43,7 @@ export const f_createGetTestset: api.FCreateGetTestset = ($d) => {
                             type: ["test", {
                                 type: ["simple string", {
                                     expected: expectedError,
-                                    actual: createPathErrorMessage($.error),
+                                    actual: pub.f_createPathErrorMessage($.error),
                                 }]
                             }]
                         })
@@ -66,7 +52,7 @@ export const f_createGetTestset: api.FCreateGetTestset = ($d) => {
                             type: ["test", {
                                 type: ["simple string", {
                                     expected: expectedPath,
-                                    actual: pub.createPathMessage($.path),
+                                    actual: pub.f_createPathMessage($.path, $d.message),
                                 }]
                             }]
                         })
@@ -96,19 +82,15 @@ export const f_createGetTestset: api.FCreateGetTestset = ($d) => {
             pathString: string,
             expectedPathPattern: string,
         ) {
-            const testsBuilder = pm.createDictionaryBuilder<testLib.TTestElement>(
-                ["ignore", null],
-                () => {
-                    pl.panic('testnames are not unique')
-                }
-            )
+            const testsBuilder = pm.createUnsafeDictionaryBuilder<testLib.TTestElement>()
 
-            const res = pub.analysePath(
+            const res = pub.f_analysePath(
                 {
-                    definition: _testProject,
+                    definition: $,
                     filePath: $d.parseFilePath(
                         {
-                            filePath: pathString
+                            filePath: pathString,
+                            pathSeparator: "/",
                         }
                     )
                 }
@@ -132,7 +114,10 @@ export const f_createGetTestset: api.FCreateGetTestset = ($d) => {
                             type: ["test", {
                                 type: ["simple string", {
                                     expected: expectedPathPattern,
-                                    actual: `/${pts.getArrayAsString($.pattern, "/")}`,
+                                    actual: `/${$d.message.getArrayAsString({
+                                        array: $.pattern,
+                                        separator: "/"
+                                    })}`,
                                 }]
                             }]
                         })
@@ -164,7 +149,7 @@ export const f_createGetTestset: api.FCreateGetTestset = ($d) => {
         testSuccess("fdd/y.txt", "/fdd/**/*.txt")
         testSuccess("fdd/a/y.txt", "/fdd/**/*.txt")
 
-        return pa.value({
+        return pl.asyncValue({
             elements: testSetsBuilder.getDictionary()
         })
     }

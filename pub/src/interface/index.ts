@@ -1,4 +1,6 @@
-export * from "./types/AnalysisResult"
-export * from "./types/FileSystemStructure"
+export * from "./types/AnalysisResult.p"
+export * from "./types/FileSystemStructure.p"
 
-export * from "./algorithms/tbd"
+export * from "./functions/functions.p"
+
+export * from "./dependencies/dependencies.p"

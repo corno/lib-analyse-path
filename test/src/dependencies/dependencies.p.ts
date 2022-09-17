@@ -1,5 +1,9 @@
 import * as path from "res-pareto-path"
+import { DDependencies } from "../interface"
 
-export const dependencies = {
-    parseFilePath: path.parseFilePath
+import * as pub from "../../../pub"
+
+export const dependencies: DDependencies = {
+    parseFilePath: path.f_parseFilePath,
+    message: pub.messageDependencies,
 }
