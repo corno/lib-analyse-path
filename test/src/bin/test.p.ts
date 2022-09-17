@@ -15,7 +15,7 @@ pe.runProgram(
         {
             getTestSet: createGetTestset(
                 data,
-                dependencies,
+                dependencies
             ),
             dependencies: test.dependencies,
         },
