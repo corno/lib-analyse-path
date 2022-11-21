@@ -1,7 +1,6 @@
 
 import * as pl from "pareto-core-lib"
 import * as pw from "pareto-core-raw"
-import * as pr from "pareto-core-resolve"
 import * as pm from "pareto-core-state"
 
 
@@ -17,7 +16,7 @@ import * as pm from "pareto-core-state"
 //expected directory instead of file
 
 
-import * as api from "../../interface"
+import * as api from "../../glossary"
 
 export const f_analysePath: api.FAnalysePath = ($) => {
     const fileNameWithExtension = `${$.filePath.baseName}${$.filePath.extension === null ? "" : `.${$.filePath.extension}`}`
@@ -67,7 +66,7 @@ export const f_analysePath: api.FAnalysePath = ($) => {
                             break
                         case "type":
                             pl.cc(processingState.currentDirectory.type[1], ($) => {
-                                pr.getEntry(
+                                pw.getEntry(
                                     $.nodes,
                                     stepID,
                                     ($) => {
@@ -150,7 +149,7 @@ export const f_analysePath: api.FAnalysePath = ($) => {
                             } else {
                                 pathPatternBuilder.push(`*.${filePath.extension}`)
 
-                                return pr.getEntry<null, api.TAnalysisResult>(
+                                return pw.getEntry<null, api.TAnalysisResult>(
                                     $.extensions,
                                     filePath.extension,
                                     () => {
@@ -171,7 +170,7 @@ export const f_analysePath: api.FAnalysePath = ($) => {
                         })
                     case "type":
                         return pl.cc(ps.currentDirectory.type[1], ($) => {
-                            return pr.getEntry(
+                            return pw.getEntry(
                                 $.nodes,
                                 fileNameWithExtension,
                                 ($): api.TAnalysisResult => {

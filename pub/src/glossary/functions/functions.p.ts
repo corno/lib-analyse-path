@@ -1,8 +1,9 @@
+import * as pt from "pareto-core-types"
+
 import { TDirectory } from "../types/FileSystemStructure.p"
-import { TParsedFilePath } from "api-pareto-path"
-import * as tostring from "api-pareto-tostring"
 import { TAnnotatedPathError, TPath, TPathError, TAnalysisResult } from "../types/AnalysisResult.p"
 import { DMessageDependencies } from "../dependencies/dependencies.p"
+import { TParsedFilePath } from "../types/types.p"
 
 export type FAnalysePath = (
     $: {
@@ -10,7 +11,6 @@ export type FAnalysePath = (
         readonly "filePath": TParsedFilePath
     },
 ) => TAnalysisResult
-
 
 export type FCreatePathErrorMessage = ($: TPathError) => string
 

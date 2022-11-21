@@ -1,6 +1,6 @@
 import * as pl from "pareto-core-lib"
 
-import * as api from "../../interface"
+import * as api from "../../glossary"
 export const f_createPathErrorMessage: api.FCreatePathErrorMessage = ($) => {
 
     switch ($[0]) {

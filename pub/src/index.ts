@@ -1,4 +1,2 @@
-export * from "./interface"
+export * from "./glossary"
 export * from "./implementation"
-
-export * from "./dependencies/messageDependencies.p"
