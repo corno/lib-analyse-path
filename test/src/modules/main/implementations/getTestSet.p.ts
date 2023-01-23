@@ -8,7 +8,7 @@ import * as mtostring from "res-pareto-tostring"
 
 import * as api from "../api"
 
-import * as pub from "../../../../../pub/dist"
+import * as pub from "../../../../../pub"
 import { data } from "../../../data/data.p"
 
 export const $$: api.CgetTestSet = () => {
