@@ -1,8 +1,8 @@
 import * as pl from "pareto-core-lib"
 
-import * as api from "../../../glossary"
+import * as api from "../api"
 
-export const $$: api.FCreatePathErrorMessage = ($) => {
+export const $$: api.CcreatePathErrorMessage = ($) => {
     switch ($[0]) {
         case "did not expect a directory":
             return pl.cc($[1], ($) => {
