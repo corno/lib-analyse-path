@@ -1,6 +1,6 @@
 {
   "name": "lib-analyse-path",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "analyses a file system path against a specified expected filesystem structure",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
