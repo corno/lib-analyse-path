@@ -89,77 +89,61 @@ export const $: mmoduleDefinition.TModuleDefinition = {
 
         },
         'functions': d({
-            "AnalysePath": {
-                'data': typeReference("AnalysePathData"),
-                'return value': typeReference("AnalysisResult")
-            },
-            "CreatePathErrorMessage": {
-                'data': typeReference("PathError"),
-                'return value': externalTypeReference("common", "String")
-            },
-            "CreatePathMessage": {
-                'data': typeReference("Path"),
-                'return value': externalTypeReference("common", "String")
-            },
-            "CreateAnnotatedPathErrorMessage": {
-                'data': typeReference("AnnotatedPathError"),
-                'return value': externalTypeReference("common", "String")
-            }
+            "AnalysePath":_function(typeReference("AnalysePathData"), typeReference("AnalysisResult")),
+            "CreatePathErrorMessage": _function(typeReference("PathError"), externalTypeReference("common", "String")),
+            "CreatePathMessage": _function(typeReference("Path"), externalTypeReference("common", "String")),
+            "CreateAnnotatedPathErrorMessage": _function(typeReference("AnnotatedPathError"), externalTypeReference("common", "String")),
         }),
-        'callbacks': d({
-        }),
-        'pipes': d({
-        }),
-    },
-    'api': {
-        'imports': d({
-            "common": "glo-pareto-common",
-            "tostring": "res-pareto-tostring",
-        }),
+},
+'api': {
+    'imports': d({
+        "common": "glo-pareto-common",
+        "tostring": "res-pareto-tostring",
+    }),
         'algorithms': d({
 
             "analysePath": {
-                'definition': ['function', {
+                'definition': {
                     'function': "AnalysePath",
-                }],
+                },
                 'type': ['reference', null],
             },
             "createPathErrorMessage": {
-                'definition': ['function', {
+                'definition': {
                     'function': "CreatePathErrorMessage",
-                }],
+                },
                 'type': ['reference', null],
             },
             "createPathMessageCreator": {
-                'definition': ['function', {
+                'definition': {
                     'function': "CreatePathMessage",
-                }],
+                },
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "getArrayAsString": ['function', {
+                        "getArrayAsString": {
                             'context': ['import', "tostring"],
                             'function': "GetArrayAsString"
-                        }]
+                        }
 
                     }),
                 }],
             },
             "createAnnotatedPathErrorMessageCreator": {
-                'definition': ['function', {
+                'definition': {
                     'function': "CreateAnnotatedPathErrorMessage",
-                }],
+                },
                 'type': ['constructor', {
                     'configuration data': null,
                     'dependencies': d({
-                        "getArrayAsString": ['function', {
+                        "getArrayAsString": {
                             'context': ['import', "tostring"],
                             'function': "GetArrayAsString"
-                        }]
+                        }
 
                     }),
                 }],
             },
         })
-    },
+},
 }

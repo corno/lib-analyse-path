@@ -53,7 +53,7 @@ export const $$: api.CgetTestSet = () => {
                             type: ["short string", {
                                 expected: expectedPath,
                                 actual: pub.$a.createPathMessageCreator({
-                                    sf_getArrayAsString: mtostring.$a.getArrayAsString
+                                    getArrayAsString: mtostring.$a.getArrayAsString
                                 })($.path),
                             }]
                         }]

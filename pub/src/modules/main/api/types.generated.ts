@@ -60,10 +60,10 @@ export type TTypeDirectory = {
     readonly 'nodes': pt.Dictionary<TNode>
 }
 
-export type FAnalysePath = ($: TAnalysePathData) => TAnalysisResult
+export type FAnalysePath = ($: TAnalysePathData,) => TAnalysisResult
 
-export type FCreateAnnotatedPathErrorMessage = ($: TAnnotatedPathError) => mcommon.TString
+export type FCreateAnnotatedPathErrorMessage = ($: TAnnotatedPathError,) => mcommon.TString
 
-export type FCreatePathErrorMessage = ($: TPathError) => mcommon.TString
+export type FCreatePathErrorMessage = ($: TPathError,) => mcommon.TString
 
-export type FCreatePathMessage = ($: TPath) => mcommon.TString
+export type FCreatePathMessage = ($: TPath,) => mcommon.TString
