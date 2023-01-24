@@ -15,7 +15,7 @@ import {
 import { dictionary, group, member, taggedUnion, types, _function } from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
 
 
-import { string, reference, externalReference, number, boolean } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
+import { definitionReference, externalDefinitionReference, constructor } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
 
 const d = pr.wrapRawDictionary
@@ -89,17 +89,17 @@ export const $: mmoduleDefinition.TModuleDefinition = {
 
         },
         'functions': d({
-            "AnalysePath":_function(typeReference("AnalysePathData"), typeReference("AnalysisResult")),
+            "AnalysePath": _function(typeReference("AnalysePathData"), typeReference("AnalysisResult")),
             "CreatePathErrorMessage": _function(typeReference("PathError"), externalTypeReference("common", "String")),
             "CreatePathMessage": _function(typeReference("Path"), externalTypeReference("common", "String")),
             "CreateAnnotatedPathErrorMessage": _function(typeReference("AnnotatedPathError"), externalTypeReference("common", "String")),
         }),
-},
-'api': {
-    'imports': d({
-        "common": "glo-pareto-common",
-        "tostring": "res-pareto-tostring",
-    }),
+    },
+    'api': {
+        'imports': d({
+            "common": "glo-pareto-common",
+            "tostring": "res-pareto-tostring",
+        }),
         'algorithms': d({
 
             "analysePath": {
@@ -130,20 +130,11 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 }],
             },
             "createAnnotatedPathErrorMessageCreator": {
-                'definition': {
-                    'function': "CreateAnnotatedPathErrorMessage",
-                },
-                'type': ['constructor', {
-                    'configuration data': null,
-                    'dependencies': d({
-                        "getArrayAsString": {
-                            'context': ['import', "tostring"],
-                            'function': "GetArrayAsString"
-                        }
-
-                    }),
-                }],
+                'definition': definitionReference("CreateAnnotatedPathErrorMessage"),
+                'type': constructor(null, {
+                    "getArrayAsString": externalDefinitionReference("tostring", "GetArrayAsString") 
+                }),
             },
         })
-},
+    },
 }
