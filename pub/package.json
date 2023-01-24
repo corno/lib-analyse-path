@@ -11,10 +11,10 @@
     "pareto-core-lib": "^0.17.0",
     "pareto-core-raw": "^0.7.4",
     "pareto-core-state": "^0.12.0",
-    "res-pareto-tostring": "^0.9.0"
+    "res-pareto-tostring": "^0.10.0"
   },
   "files": [
     "dist"
   ],
-  "content-fingerprint": "fb95e05baf9d5f08b82e0759bf378beeb51ef672"
+  "content-fingerprint": "24c5aa2bfe0d7f95dcc37b78ee9d901393800790"
 }
