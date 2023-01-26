@@ -26,69 +26,66 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "common": "glo-pareto-common",
         }),
         'parameters': d({}),
-        'namespace': {
-            'types': types({
-                "AnalysePathData": group({
-                    "definition": member(ref("Directory")),
-                    "filePath": member(ref("ParsedFilePath")),
-                }),
-                "AnalysisResult": taggedUnion({
-                    "error": ref("AnnotatedPathError"),
-                    "success": group({
-                        "pattern": member(array(str()))
-                    })
-                }),
-                "AnnotatedPathError": group({
-                    "error": member(ref("PathError")),
-                    "path": member(ref("Path"))
-                }),
-
-                "Directory": group({
-                    "type": member(taggedUnion({
-                        "directory dictionary": group({
-                            "definition": member(ref("Directory"))
-                        }),
-                        "files dictionary": ref("FilesDictionary"),
-                        "type": ref("TypeDirectory")
-
-                    }))
-                }),
-                "FilesDictionary": group({
-                    "allow missing extension": member(bln()),
-                    "extensions": member(dictionary(null_())),
-                    "recursive": member(bln()),
-                }),
-                "Node": group({
-                    "type": member(taggedUnion({
-                        "file": null_(),
-                        "directory": ref("Directory")
-                    }))
-                }),
-                "ParsedFilePath": group({
-                    "directoryPath": member(ref("Path")),
-                    "baseName": member(str()),
-                    "extension": member(optional(str()))
-                }),
-                "Path": array(str()),
-
-                "PathError": taggedUnion({
-                    "unexpected missing extension": null_(),
-                    "expected directory (any name)": null_(),
-                    "unexpected extension": null_(),
-                    "did not expect a directory": null_(),
-                    "unexpected directory": null_(),
-                    "expected file instead of directory": null_(),
-                    "unexpected file": null_(),
-                    "expected directory instead of file": null_(),
-                }),
-                "TypeDirectory": group({
-                    "nodes": member(dictionary(ref("Node")))
-                }),
+        'types': types({
+            "AnalysePathData": group({
+                "definition": member(ref("Directory")),
+                "filePath": member(ref("ParsedFilePath")),
             }),
-            'interfaces': d({
+            "AnalysisResult": taggedUnion({
+                "error": ref("AnnotatedPathError"),
+                "success": group({
+                    "pattern": member(array(str()))
+                })
+            }),
+            "AnnotatedPathError": group({
+                "error": member(ref("PathError")),
+                "path": member(ref("Path"))
             }),
 
-        },
+            "Directory": group({
+                "type": member(taggedUnion({
+                    "directory dictionary": group({
+                        "definition": member(ref("Directory"))
+                    }),
+                    "files dictionary": ref("FilesDictionary"),
+                    "type": ref("TypeDirectory")
+
+                }))
+            }),
+            "FilesDictionary": group({
+                "allow missing extension": member(bln()),
+                "extensions": member(dictionary(null_())),
+                "recursive": member(bln()),
+            }),
+            "Node": group({
+                "type": member(taggedUnion({
+                    "file": null_(),
+                    "directory": ref("Directory")
+                }))
+            }),
+            "ParsedFilePath": group({
+                "directoryPath": member(ref("Path")),
+                "baseName": member(str()),
+                "extension": member(optional(str()))
+            }),
+            "Path": array(str()),
+
+            "PathError": taggedUnion({
+                "unexpected missing extension": null_(),
+                "expected directory (any name)": null_(),
+                "unexpected extension": null_(),
+                "did not expect a directory": null_(),
+                "unexpected directory": null_(),
+                "expected file instead of directory": null_(),
+                "unexpected file": null_(),
+                "expected directory instead of file": null_(),
+            }),
+            "TypeDirectory": group({
+                "nodes": member(dictionary(ref("Node")))
+            }),
+        }),
+        'interfaces': d({
+        }),
         'functions': d({
             "AnalysePath": _function(typeReference("AnalysePathData"), typeReference("AnalysisResult")),
             "CreatePathErrorMessage": _function(typeReference("PathError"), externalTypeReference("common", "String")),
@@ -133,7 +130,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "createAnnotatedPathErrorMessageCreator": {
                 'definition': definitionReference("CreateAnnotatedPathErrorMessage"),
                 'type': constructor(null, {
-                    "getArrayAsString": externalDefinitionReference("tostring", "GetArrayAsString") 
+                    "getArrayAsString": externalDefinitionReference("tostring", "GetArrayAsString")
                 }),
             },
         })
