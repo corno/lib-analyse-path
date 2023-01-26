@@ -24,12 +24,13 @@ export const $: mmoduleDefinition.TModuleDefinition = {
     'glossary': {
         'imports': d({
             "common": "glo-pareto-common",
+            "path": "res-pareto-path"
         }),
         'parameters': d({}),
         'types': types({
             "AnalysePathData": group({
                 "definition": member(ref("Directory")),
-                "filePath": member(ref("ParsedFilePath")),
+                "filePath": member(er("path", "ParsedFilePath")),
             }),
             "AnalysisResult": taggedUnion({
                 "error": ref("AnnotatedPathError"),
@@ -63,11 +64,11 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                     "directory": ref("Directory")
                 }))
             }),
-            "ParsedFilePath": group({
-                "directoryPath": member(ref("Path")),
-                "baseName": member(str()),
-                "extension": member(optional(str()))
-            }),
+            // "ParsedFilePath": group({
+            //     "directoryPath": member(ref("Path")),
+            //     "baseName": member(str()),
+            //     "extension": member(optional(str()))
+            // }),
             "Path": array(str()),
 
             "PathError": taggedUnion({

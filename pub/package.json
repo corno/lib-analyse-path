@@ -7,14 +7,15 @@
   "author": "Corno",
   "license": "ISC",
   "dependencies": {
-    "glo-pareto-common": "^0.7.0",
+    "glo-pareto-common": "^0.8.0",
     "pareto-core-lib": "^0.17.0",
     "pareto-core-raw": "^0.7.4",
     "pareto-core-state": "^0.12.0",
+    "res-pareto-path": "^0.13.0",
     "res-pareto-tostring": "^0.10.0"
   },
   "files": [
     "dist"
   ],
-  "content-fingerprint": "0cfc474b27919804dde7529ab9ca244a7587b79f"
+  "content-fingerprint": "6e3f945910b08fc6340b2ad954b55f0929b91139"
 }

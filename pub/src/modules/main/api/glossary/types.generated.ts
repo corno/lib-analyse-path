@@ -1,11 +1,12 @@
 import * as pt from 'pareto-core-types'
 
 import * as mcommon from "glo-pareto-common"
+import * as mpath from "res-pareto-path"
 
 export namespace GAnalysePathData {}
 export type GAnalysePathData = {
     readonly 'definition': UDirectory
-    readonly 'filePath': UParsedFilePath
+    readonly 'filePath': mpath.TParsedFilePath
 }
 export type UAnalysePathData = GAnalysePathData
 
@@ -74,18 +75,6 @@ export type GNode = {
     readonly 'type': GNode.Ptype
 }
 export type UNode = GNode
-
-export namespace GParsedFilePath {
-    
-    export namespace Pextension {}
-    export type Pextension = null | string
-}
-export type GParsedFilePath = {
-    readonly 'baseName': string
-    readonly 'directoryPath': UPath
-    readonly 'extension': GParsedFilePath.Pextension
-}
-export type UParsedFilePath = GParsedFilePath
 
 export namespace GPath {}
 export type GPath = pt.Array<string>
