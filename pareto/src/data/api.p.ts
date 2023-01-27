@@ -27,6 +27,7 @@ export const $: mmoduleDefinition.TModuleDefinition = {
             "path": "res-pareto-path"
         }),
         'parameters': d({}),
+        'templates': d({}),
         'types': types({
             "AnalysePathData": group({
                 "definition": member(ref("Directory")),
