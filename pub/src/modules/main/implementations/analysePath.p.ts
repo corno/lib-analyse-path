@@ -19,8 +19,7 @@ import * as pm from "pareto-core-state"
 import * as api from "../api"
 
 export const $$: api.CanalysePath = ($) => {
-    const fileNameWithExtension = `${$.filePath.baseName}${$.filePath.extension === null ? "" : `.${$.filePath.extension}`}`
-
+    const fileNameWithExtension = `${$.filePath.baseName}${$.filePath.extension[0] === 'not set' ? "" : `.${$.filePath.extension[1]}`}`
 
     const filePath = $.filePath
 
@@ -135,38 +134,48 @@ export const $$: api.CanalysePath = ($) => {
                             if ($.recursive) {
                                 pathPatternBuilder.push("**")
                             }
-                            if (filePath.extension === null) {
-                                pathPatternBuilder.push(`*`)
+                            const x = $
+                            return pl.cc((filePath.extension), ($) => {
+                                switch ($[0]) {
+                                    case 'not set':
+                                        return pl.cc($[1], ($) => {
 
-                                if ($["allow missing extension"]) {
-                                    return ["success", { pattern: pathPatternBuilder.getArray() }]
-                                } else {
-                                    return ["error", {
-                                        error: ["unexpected missing extension", null],
-                                        path: fullPath
-                                    }]
+                                            pathPatternBuilder.push(`*`)
+                                            if (x["allow missing extension"]) {
+                                                return ["success", { pattern: pathPatternBuilder.getArray() }]
+                                            } else {
+                                                return ["error", {
+                                                    error: ["unexpected missing extension", null],
+                                                    path: fullPath
+                                                }]
+                                            }
+                                        })
+                                    case 'set':
+                                        return pl.cc($[1], ($) => {
+
+                                            pathPatternBuilder.push(`*.${$}`)
+
+                                            return pw.getEntry<null, api.TAnalysisResult>(
+                                                x.extensions,
+                                                $,
+                                                () => {
+                                                    return ["success", {
+                                                        pattern: pathPatternBuilder.getArray()
+                                                    }]
+
+                                                },
+                                                () => {
+                                                    return ["error", {
+                                                        error: ["unexpected extension", null],
+                                                        path: fullPath
+                                                    }]
+
+                                                }
+                                            )
+                                        })
+                                    default: return pl.au($[0])
                                 }
-                            } else {
-                                pathPatternBuilder.push(`*.${filePath.extension}`)
-
-                                return pw.getEntry<null, api.TAnalysisResult>(
-                                    $.extensions,
-                                    filePath.extension,
-                                    () => {
-                                        return ["success", {
-                                            pattern: pathPatternBuilder.getArray()
-                                        }]
-
-                                    },
-                                    () => {
-                                        return ["error", {
-                                            error: ["unexpected extension", null],
-                                            path: fullPath
-                                        }]
-
-                                    }
-                                )
-                            }
+                            })
                         })
                     case "type":
                         return pl.cc(ps.currentDirectory.type[1], ($) => {
