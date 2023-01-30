@@ -8,12 +8,12 @@ import {
     boolean,
     nested,
     typeReference,
-    dictionary, group, member, taggedUnion, types, _function
-} from "lib-pareto-typescript-project/dist/modules/glossary/api/shorthands.p"
+    dictionary, group, member, taggedUnion, types, func, data
+} from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
-import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/modules/moduleDefinition/api/shorthands.p"
+import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p"
 
-import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/modules/moduleDefinition"
+import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
 
 const d = pr.wrapRawDictionary
 
@@ -78,10 +78,10 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         'interfaces': d({
         }),
         'functions': d({
-            "AnalysePath": _function(typeReference("AnalysePathData"), typeReference("AnalysisResult")),
-            "CreatePathErrorMessage": _function(typeReference("PathError"), typeReference("common", "String")),
-            "CreatePathMessage": _function(typeReference("Path"), typeReference("common", "String")),
-            "CreateAnnotatedPathErrorMessage": _function(typeReference("AnnotatedPathError"), typeReference("common", "String")),
+            "AnalysePath": func(typeReference("AnalysePathData"), null, null, data(typeReference("AnalysisResult"), false)),
+            "CreatePathErrorMessage": func(typeReference("PathError"), null, null, data(typeReference("common", "String"), false)),
+            "CreatePathMessage": func(typeReference("Path"), null, null, data(typeReference("common", "String"), false)),
+            "CreateAnnotatedPathErrorMessage": func(typeReference("AnnotatedPathError"), null, null, data(typeReference("common", "String"), false)),
         }),
     },
     'api': {
