@@ -15,7 +15,7 @@ import { definitionReference, constructor, algorithm } from "lib-pareto-typescri
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
 
-import { $ as glossary } from "./glossary.p"
+import { $ as glossary } from "./glossary.data"
 
 const d = pr.wrapRawDictionary
 

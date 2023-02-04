@@ -4,7 +4,7 @@ import * as mproject from "lib-pareto-typescript-project/dist/submodules/project
 
 const d = pr.wrapRawDictionary
 
-import { $ as api } from "./api.p"
+import { $ as api } from "./api.data"
 
 export const $: mproject.TProject = {
     'author': "Corno",
