@@ -3,101 +3,179 @@ import * as pt from 'pareto-core-types'
 import * as mcommon from "glo-pareto-common"
 import * as mpath from "res-pareto-path"
 
-export namespace GAnalysePathData {}
-export type GAnalysePathData = {
-    readonly 'definition': UDirectory
-    readonly 'filePath': mpath.TParsedFilePath
-}
-export type UAnalysePathData = GAnalysePathData
-
-export namespace GAnalysisResult {
+export namespace T {
     
-    export namespace Osuccess {
+    export namespace AnalysePathData {
         
-        export namespace Ppattern {}
-        export type Ppattern = pt.Array<string>
+        export type definition = T.Directory
+        
+        export type filePath = mpath.T.ParsedFilePath
     }
-    export type Osuccess = {
-        readonly 'pattern': Osuccess.Ppattern
-    }
-}
-export type GAnalysisResult = 
-    | ['error', UAnnotatedPathError]
-    | ['success', GAnalysisResult.Osuccess]
-export type UAnalysisResult = GAnalysisResult
-
-export namespace GAnnotatedPathError {}
-export type GAnnotatedPathError = {
-    readonly 'error': UPathError
-    readonly 'path': UPath
-}
-export type UAnnotatedPathError = GAnnotatedPathError
-
-export namespace GDirectory {
     
-    export namespace Ptype {
+    export type AnalysePathData = {
+        readonly 'definition': T.Directory
+        readonly 'filePath': mpath.T.ParsedFilePath
+    }
+    
+    export namespace AnalysisResult {
         
-        export namespace Odirectory__dictionary {}
-        export type Odirectory__dictionary = {
-            readonly 'definition': UDirectory
+        export type error = T.AnnotatedPathError
+        
+        export namespace success {
+            
+            export namespace pattern {
+                
+                export type A = string
+            }
+            
+            export type pattern = pt.Array<string>
+        }
+        
+        export type success = {
+            readonly 'pattern': pt.Array<string>
         }
     }
-    export type Ptype = 
-        | ['directory dictionary', Ptype.Odirectory__dictionary]
-        | ['files dictionary', UFilesDictionary]
-        | ['type', UTypeDirectory]
-}
-export type GDirectory = {
-    readonly 'type': GDirectory.Ptype
-}
-export type UDirectory = GDirectory
-
-export namespace GFilesDictionary {
     
-    export namespace Pextensions {}
-    export type Pextensions = pt.Dictionary<null>
-}
-export type GFilesDictionary = {
-    readonly 'allow missing extension': boolean
-    readonly 'extensions': GFilesDictionary.Pextensions
-    readonly 'recursive': boolean
-}
-export type UFilesDictionary = GFilesDictionary
-
-export namespace GNode {
+    export type AnalysisResult = 
+        | ['error', T.AnnotatedPathError]
+        | ['success', {
+            readonly 'pattern': pt.Array<string>
+        }]
     
-    export namespace Ptype {}
-    export type Ptype = 
-        | ['directory', UDirectory]
-        | ['file', null]
-}
-export type GNode = {
-    readonly 'type': GNode.Ptype
-}
-export type UNode = GNode
-
-export namespace GPath {}
-export type GPath = pt.Array<string>
-export type UPath = GPath
-
-export namespace GPathError {}
-export type GPathError = 
-    | ['did not expect a directory', null]
-    | ['expected directory (any name)', null]
-    | ['expected directory instead of file', null]
-    | ['expected file instead of directory', null]
-    | ['unexpected directory', null]
-    | ['unexpected extension', null]
-    | ['unexpected file', null]
-    | ['unexpected missing extension', null]
-export type UPathError = GPathError
-
-export namespace GTypeDirectory {
+    export namespace AnnotatedPathError {
+        
+        export type error = T.PathError
+        
+        export type path = T.Path
+    }
     
-    export namespace Pnodes {}
-    export type Pnodes = pt.Dictionary<UNode>
+    export type AnnotatedPathError = {
+        readonly 'error': T.PathError
+        readonly 'path': T.Path
+    }
+    
+    export namespace Directory {
+        
+        export namespace _ltype {
+            
+            export namespace directory__dictionary {
+                
+                export type definition = T.Directory
+            }
+            
+            export type directory__dictionary = {
+                readonly 'definition': T.Directory
+            }
+            
+            export type files__dictionary = T.FilesDictionary
+            
+            export type _ltype = T.TypeDirectory
+        }
+        
+        export type _ltype = 
+            | ['directory dictionary', {
+                readonly 'definition': T.Directory
+            }]
+            | ['files dictionary', T.FilesDictionary]
+            | ['type', T.TypeDirectory]
+    }
+    
+    export type Directory = {
+        readonly 'type': 
+            | ['directory dictionary', {
+                readonly 'definition': T.Directory
+            }]
+            | ['files dictionary', T.FilesDictionary]
+            | ['type', T.TypeDirectory]
+    }
+    
+    export namespace FilesDictionary {
+        
+        export type allow__missing__extension = boolean
+        
+        export namespace extensions {
+            
+            export type D = null
+        }
+        
+        export type extensions = pt.Dictionary<null>
+        
+        export type recursive = boolean
+    }
+    
+    export type FilesDictionary = {
+        readonly 'allow missing extension': boolean
+        readonly 'extensions': pt.Dictionary<null>
+        readonly 'recursive': boolean
+    }
+    
+    export namespace Node {
+        
+        export namespace _ltype {
+            
+            export type directory = T.Directory
+            
+            export type file = null
+        }
+        
+        export type _ltype = 
+            | ['directory', T.Directory]
+            | ['file', null]
+    }
+    
+    export type Node = {
+        readonly 'type': 
+            | ['directory', T.Directory]
+            | ['file', null]
+    }
+    
+    export namespace Path {
+        
+        export type A = string
+    }
+    
+    export type Path = pt.Array<string>
+    
+    export namespace PathError {
+        
+        export type did__not__expect__a__directory = null
+        
+        export type expected__directory___poany__name_pc = null
+        
+        export type expected__directory__instead__of__file = null
+        
+        export type expected__file__instead__of__directory = null
+        
+        export type unexpected__directory = null
+        
+        export type unexpected__extension = null
+        
+        export type unexpected__file = null
+        
+        export type unexpected__missing__extension = null
+    }
+    
+    export type PathError = 
+        | ['did not expect a directory', null]
+        | ['expected directory (any name)', null]
+        | ['expected directory instead of file', null]
+        | ['expected file instead of directory', null]
+        | ['unexpected directory', null]
+        | ['unexpected extension', null]
+        | ['unexpected file', null]
+        | ['unexpected missing extension', null]
+    
+    export namespace TypeDirectory {
+        
+        export namespace nodes {
+            
+            export type D = T.Node
+        }
+        
+        export type nodes = pt.Dictionary<T.Node>
+    }
+    
+    export type TypeDirectory = {
+        readonly 'nodes': pt.Dictionary<T.Node>
+    }
 }
-export type GTypeDirectory = {
-    readonly 'nodes': GTypeDirectory.Pnodes
-}
-export type UTypeDirectory = GTypeDirectory

@@ -24,9 +24,9 @@ export const $$: api.CanalysePath = ($) => {
     const filePath = $.filePath
 
     type State =
-        | ["error", api.TPathError]
+        | ["error", api.T.PathError]
         | ["processing", {
-            currentDirectory: api.TDirectory
+            currentDirectory: api.T.Directory
         }]
 
     let state: State = ["processing", {
@@ -39,23 +39,23 @@ export const $$: api.CanalysePath = ($) => {
     $.filePath.directoryPath.forEach(($) => {
         const stepID = $
         switch (state[0]) {
-            case "error":
+            case 'error':
                 pl.cc(state[1], ($) => {
 
                 })
                 break
-            case "processing":
+            case 'processing':
                 pl.cc(state[1], ($) => {
                     pathBuilder.push(stepID)
                     const processingState = $
                     switch (processingState.currentDirectory.type[0]) {
-                        case "directory dictionary":
+                        case 'directory dictionary':
                             pl.cc(processingState.currentDirectory.type[1], ($) => {
                                 processingState.currentDirectory = $.definition
                                 pathPatternBuilder.push("*")
                             })
                             break
-                        case "files dictionary":
+                        case 'files dictionary':
                             pl.cc(processingState.currentDirectory.type[1], ($) => {
                                 if ($.recursive) {
                                 } else {
@@ -63,19 +63,19 @@ export const $$: api.CanalysePath = ($) => {
                                 }
                             })
                             break
-                        case "type":
+                        case 'type':
                             pl.cc(processingState.currentDirectory.type[1], ($) => {
                                 pw.getEntry(
                                     $.nodes,
                                     stepID,
                                     ($) => {
                                         switch ($.type[0]) {
-                                            case "file":
+                                            case 'file':
                                                 pl.cc($.type[1], ($) => {
                                                     state = ["error", ["expected file instead of directory", null]]
                                                 })
                                                 break
-                                            case "directory":
+                                            case 'directory':
                                                 pl.cc($.type[1], ($) => {
                                                     pathPatternBuilder.push(stepID)
                                                     processingState.currentDirectory = $
@@ -108,28 +108,28 @@ export const $$: api.CanalysePath = ($) => {
     state = getState()
 
     switch (state[0]) {
-        case "error":
+        case 'error':
             return pl.cc(state[1], ($) => {
                 return ["error", {
                     error: $,
                     path: pathBuilder.getArray()
                 }]
             })
-        case "processing":
+        case 'processing':
             return pl.cc(state[1], ($) => {
 
                 pathBuilder.push(fileNameWithExtension)
                 const fullPath = pathBuilder.getArray()
                 const ps = $
                 switch (ps.currentDirectory.type[0]) {
-                    case "directory dictionary":
+                    case 'directory dictionary':
                         return pl.cc(ps.currentDirectory.type[1], ($) => {
                             return ["error", {
                                 error: ["expected directory (any name)", null],
                                 path: fullPath
                             }]
                         })
-                    case "files dictionary":
+                    case 'files dictionary':
                         return pl.cc(ps.currentDirectory.type[1], ($) => {
                             if ($.recursive) {
                                 pathPatternBuilder.push("**")
@@ -155,7 +155,7 @@ export const $$: api.CanalysePath = ($) => {
 
                                             pathPatternBuilder.push(`*.${$}`)
 
-                                            return pw.getEntry<null, api.TAnalysisResult>(
+                                            return pw.getEntry<null, api.T.AnalysisResult>(
                                                 x.extensions,
                                                 $,
                                                 () => {
@@ -177,14 +177,14 @@ export const $$: api.CanalysePath = ($) => {
                                 }
                             })
                         })
-                    case "type":
+                    case 'type':
                         return pl.cc(ps.currentDirectory.type[1], ($) => {
                             return pw.getEntry(
                                 $.nodes,
                                 fileNameWithExtension,
-                                ($): api.TAnalysisResult => {
+                                ($): api.T.AnalysisResult => {
                                     switch ($.type[0]) {
-                                        case "file":
+                                        case 'file':
                                             return pl.cc($.type[1], ($) => {
                                                 pathPatternBuilder.push(fileNameWithExtension)
 
@@ -192,8 +192,8 @@ export const $$: api.CanalysePath = ($) => {
                                                     pattern: pathPatternBuilder.getArray(),
                                                 }]
                                             })
-                                        case "directory":
-                                            return pl.cc($.type[1], ($): api.TAnalysisResult => {
+                                        case 'directory':
+                                            return pl.cc($.type[1], ($): api.T.AnalysisResult => {
                                                 return ["error", {
                                                     error: ["expected directory instead of file", null],
                                                     path: fullPath,
@@ -202,7 +202,7 @@ export const $$: api.CanalysePath = ($) => {
                                         default: return pl.au($.type[0])
                                     }
                                 },
-                                (): api.TAnalysisResult => {
+                                (): api.T.AnalysisResult => {
                                     return ["error", {
                                         error: ["unexpected file", null],
                                         path: fullPath,
