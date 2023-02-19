@@ -33,8 +33,8 @@ export const $$: api.CanalysePath = ($) => {
         currentDirectory: $.definition
     }]
 
-    const pathPatternBuilder = pm.createArrayBuilder<string>()
-    const pathBuilder = pm.createArrayBuilder<string>()
+    const pathPatternBuilder = pm.createArrayBuilderFIXME<string>()
+    const pathBuilder = pm.createArrayBuilderFIXME<string>()
 
     $.filePath.directoryPath.forEach(($) => {
         const stepID = $
