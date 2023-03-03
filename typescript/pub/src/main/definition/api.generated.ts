@@ -1,21 +1,20 @@
 import * as pt from 'pareto-core-types'
 
-import * as gglo from "./glossary"
-
 import * as gcommon from "glo-pareto-common"
+import * as gthis from "./glossary"
 import * as gtostring from "res-pareto-tostring"
 
-export type CanalysePath = gglo.FAnalysePath
+export type CanalysePath = gthis.FAnalysePath
 
 export type CcreateAnnotatedPathErrorMessageCreator = ($d: {
     readonly 'getArrayAsString': gtostring.FGetArrayAsString
-}) => gglo.FCreateAnnotatedPathErrorMessage
+}) => gthis.FCreateAnnotatedPathErrorMessage
 
-export type CcreatePathErrorMessage = gglo.FCreatePathErrorMessage
+export type CcreatePathErrorMessage = gthis.FCreatePathErrorMessage
 
 export type CcreatePathMessageCreator = ($d: {
     readonly 'getArrayAsString': gtostring.FGetArrayAsString
-}) => gglo.FCreatePathMessage
+}) => gthis.FCreatePathMessage
 
 export type API = {
     analysePath: CanalysePath

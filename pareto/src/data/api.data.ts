@@ -1,29 +1,19 @@
 import * as pd from 'pareto-core-data'
 
-import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands"
+import { functionReference, constructor, algorithm, typeReference } from "lib-pareto-typescript-project/dist/submodules/api/shorthands"
 
-import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
-
-import { $ as glossary } from "./glossary.data"
-
+import * as gapi from "lib-pareto-typescript-project/dist/submodules/api"
 const d = pd.d
 
-export const $: mmoduleDefinition.T.ModuleDefinition<pd.SourceLocation> = {
-    'glossary': glossary,
-    'api': {
-        'imports': d({
-            "common": "glo-pareto-common",
-            "tostring": "res-pareto-tostring",
-        }),
-        'algorithms': d({
-            "analysePath": algorithm(definitionReference("AnalysePath")),
-            "createPathErrorMessage": algorithm(definitionReference("CreatePathErrorMessage")),
-            "createPathMessageCreator": algorithm(definitionReference("CreatePathMessage"), constructor(null, {
-                "getArrayAsString": definitionReference("tostring", {}, "GetArrayAsString")
-            })),
-            "createAnnotatedPathErrorMessageCreator": algorithm(definitionReference("CreateAnnotatedPathErrorMessage"), constructor(null, {
-                "getArrayAsString": definitionReference("tostring", {}, "GetArrayAsString")
-            })),
-        })
-    },
+export const $: gapi.T.API<pd.SourceLocation> = {
+    'algorithms': d({
+        "analysePath": algorithm(functionReference("this", {}, "AnalysePath")),
+        "createPathErrorMessage": algorithm(functionReference("this", {}, "CreatePathErrorMessage")),
+        "createPathMessageCreator": algorithm(functionReference("this", {}, "CreatePathMessage"), constructor(null, {
+            "getArrayAsString": functionReference("tostring", {}, "GetArrayAsString")
+        })),
+        "createAnnotatedPathErrorMessageCreator": algorithm(functionReference("this", {}, "CreateAnnotatedPathErrorMessage"), constructor(null, {
+            "getArrayAsString": functionReference("tostring", {}, "GetArrayAsString")
+        })),
+    })
 }

@@ -1,4 +1,4 @@
-import { API } from "./api"
+import { API } from "./definition/api.generated"
 import { $$ as ianalysePath } from "./implementations/analysePath.p"
 import { $$ as icreateAnnotatedPathErrorMessageCreator } from "./implementations/createAnnotatedPathErrorMessageCreator.p"
 import { $$ as icreatePathErrorMessage } from "./implementations/createPathErrorMessage.p"
