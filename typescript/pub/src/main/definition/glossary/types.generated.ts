@@ -1,7 +1,7 @@
 import * as pt from 'pareto-core-types'
 
-import * as gcommon from "glo-pareto-common"
-import * as gpath from "res-pareto-path"
+import * as g_common from "glo-pareto-common"
+import * as g_path from "res-pareto-path"
 
 export namespace T {
     
@@ -9,12 +9,12 @@ export namespace T {
         
         export type definition = T.Directory
         
-        export type filePath = gpath.T.ParsedFilePath
+        export type filePath = g_path.T.ParsedFilePath
     }
     
     export type AnalysePathData = {
         readonly 'definition': T.Directory
-        readonly 'filePath': gpath.T.ParsedFilePath
+        readonly 'filePath': g_path.T.ParsedFilePath
     }
     
     export namespace AnalysisResult {

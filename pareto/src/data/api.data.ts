@@ -10,10 +10,10 @@ export const $: gapi.T.API<pd.SourceLocation> = {
         "analysePath": algorithm(functionReference("this", {}, "AnalysePath")),
         "createPathErrorMessage": algorithm(functionReference("this", {}, "CreatePathErrorMessage")),
         "createPathMessageCreator": algorithm(functionReference("this", {}, "CreatePathMessage"), constructor(null, {
-            "getArrayAsString": functionReference("tostring", {}, "GetArrayAsString")
+            "getArrayAsString": functionReference("tostring", {}, "GetArrayAsString"),
         })),
         "createAnnotatedPathErrorMessageCreator": algorithm(functionReference("this", {}, "CreateAnnotatedPathErrorMessage"), constructor(null, {
-            "getArrayAsString": functionReference("tostring", {}, "GetArrayAsString")
+            "getArrayAsString": functionReference("tostring", {}, "GetArrayAsString"),
         })),
-    })
+    }),
 }

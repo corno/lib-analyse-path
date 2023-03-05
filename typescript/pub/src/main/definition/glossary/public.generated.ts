@@ -1,14 +1,21 @@
 import * as pt from 'pareto-core-types'
 
-import { T   } from './types.generated'
+import { T } from './types.generated'
 
-import * as gcommon from "glo-pareto-common"
-import * as gpath from "res-pareto-path"
+import * as g_common from "glo-pareto-common"
+import * as g_path from "res-pareto-path"
 
-export type FAnalysePath = ($: T.AnalysePathData,) => T.AnalysisResult
+export namespace I {}
 
-export type FCreateAnnotatedPathErrorMessage = ($: T.AnnotatedPathError,) => gcommon.T.String
+export namespace B {}
 
-export type FCreatePathErrorMessage = ($: T.PathError,) => gcommon.T.String
-
-export type FCreatePathMessage = ($: T.Path,) => gcommon.T.String
+export namespace F {
+    
+    export type AnalysePath = ($: T.AnalysePathData,) => T.AnalysisResult
+    
+    export type CreateAnnotatedPathErrorMessage = ($: T.AnnotatedPathError,) => g_common.T.String
+    
+    export type CreatePathErrorMessage = ($: T.PathError,) => g_common.T.String
+    
+    export type CreatePathMessage = ($: T.Path,) => g_common.T.String
+}

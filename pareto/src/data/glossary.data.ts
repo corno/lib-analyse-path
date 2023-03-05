@@ -24,21 +24,21 @@ export const $: mglossary.T.Glossary<string> = {
         "AnalysisResult": type(taggedUnion({
             "error": reference("AnnotatedPathError"),
             "success": group({
-                "pattern": member(array(string()))
-            })
+                "pattern": member(array(string())),
+            }),
         })),
         "AnnotatedPathError": type(group({
             "error": member(reference("PathError")),
-            "path": member(reference("Path"))
+            "path": member(reference("Path")),
         })),
         "Directory": type(group({
             "type": member(taggedUnion({
                 "directory dictionary": group({
-                    "definition": member(reference("Directory"))
+                    "definition": member(reference("Directory")),
                 }),
                 "files dictionary": reference("FilesDictionary"),
-                "type": reference("TypeDirectory")
-            }))
+                "type": reference("TypeDirectory"),
+            })),
         })),
         "FilesDictionary": type(group({
             "allow missing extension": member(boolean()),
@@ -48,8 +48,8 @@ export const $: mglossary.T.Glossary<string> = {
         "Node": type(group({
             "type": member(taggedUnion({
                 "file": null_(),
-                "directory": reference("Directory")
-            }))
+                "directory": reference("Directory"),
+            })),
         })),
         "Path": type(array(string())),
         "PathError": type(taggedUnion({
@@ -63,9 +63,10 @@ export const $: mglossary.T.Glossary<string> = {
             "expected directory instead of file": null_(),
         })),
         "TypeDirectory": type(group({
-            "nodes": member(dictionary(reference("Node")))
+            "nodes": member(dictionary(reference("Node"))),
         })),
     }),
+    'builders': d({}),
     'interfaces': d({
     }),
     'functions': d({
