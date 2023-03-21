@@ -1,19 +1,19 @@
 import * as pd from 'pareto-core-data'
 
-import { functionReference, constructor, algorithm, typeReference } from "lib-pareto-typescript-project/dist/submodules/api/shorthands"
+import { algorithm, dependent, sfunction } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
 
-import * as gapi from "lib-pareto-typescript-project/dist/submodules/api"
+import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"
 const d = pd.d
 
-export const $: gapi.T.API<pd.SourceLocation> = {
+export const $: g_project.T.ModuleDefinition.api.root<pd.SourceLocation> = {
     'algorithms': d({
-        "analysePath": algorithm(functionReference("this", {}, "AnalysePath")),
-        "createPathErrorMessage": algorithm(functionReference("this", {}, "CreatePathErrorMessage")),
-        "createPathMessageCreator": algorithm(functionReference("this", {}, "CreatePathMessage"), constructor(null, {
-            "getArrayAsString": functionReference("tostring", {}, "GetArrayAsString"),
-        })),
-        "createAnnotatedPathErrorMessageCreator": algorithm(functionReference("this", {}, "CreateAnnotatedPathErrorMessage"), constructor(null, {
-            "getArrayAsString": functionReference("tostring", {}, "GetArrayAsString"),
-        })),
+        "analysePath": algorithm(sfunction("this", {}, "AnalysePath")),
+        "createPathErrorMessage": algorithm(sfunction("this", {}, "CreatePathErrorMessage")),
+        "createPathMessage": algorithm(sfunction("this", {}, "CreatePathMessage"), {}, dependent(null, {
+            "getArrayAsString": sfunction("tostring", {}, "GetArrayAsString"),
+        }, {})),
+        "createAnnotatedPathErrorMessage": algorithm(sfunction("this", {}, "CreateAnnotatedPathErrorMessage"), {}, dependent(null, {
+            "getArrayAsString": sfunction("tostring", {}, "GetArrayAsString"),
+        }, {})),
     }),
 }

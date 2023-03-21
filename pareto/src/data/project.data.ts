@@ -42,20 +42,38 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
         },
         'submodules': d({
         }),
+        'bindings': [false],
         'executables': d({}),
         'test': {
             'dependencies': d({
                 "res-pareto-path": null,
                 "res-pareto-tostring": null,
             }),
-            'glossary': {
-                'parameters': d({}),
-                'types': d({}),
-                'builders': d({}),
-                'interfaces': d({}),
-                'functions': d({}),
+            'definition': {
+                'glossary': {
+                    'root': {
+                        'parameters': d({}),
+                        'imports': d({}),
+                        'types': d({}),
+                        'asynchronous': {
+                            'interfaces': d({}),
+                            'algorithms': d({}),
+                        },
+                        'synchronous': {
+                            'interfaces': d({}),
+                            'algorithms': d({}),
+                        },
+                    },
+                    'imports': d({}),
+                },
+                'api': {
+                    'root': {
+                        'algorithms': d({}),
+                    },
+                    'imports': d({}),
+                },
             },
             'imports': d({}),
-        }
+        },
     }],
 }

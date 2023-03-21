@@ -1,12 +1,12 @@
-import { API } from "./definition/api.generated"
-import { $$ as ianalysePath } from "./implementations/analysePath.p"
-import { $$ as icreateAnnotatedPathErrorMessageCreator } from "./implementations/createAnnotatedPathErrorMessageCreator.p"
-import { $$ as icreatePathErrorMessage } from "./implementations/createPathErrorMessage.p"
-import { $$ as icreatePathMessageCreator } from "./implementations/createPathMessageCreator.p"
+import { API } from "./api.generated"
+import { $$ as ianalysePath } from "./implementations/analysePath.s.f"
+import { $$ as icreateAnnotatedPathErrorMessage } from "./implementations/createAnnotatedPathErrorMessage.s.f"
+import { $$ as icreatePathErrorMessage } from "./implementations/createPathErrorMessage.s.f"
+import { $$ as icreatePathMessage } from "./implementations/createPathMessage.s.f"
 
-export const $a: API = {
+export const $api: API = {
     'analysePath': ianalysePath,
-    'createAnnotatedPathErrorMessageCreator': icreateAnnotatedPathErrorMessageCreator,
+    'createAnnotatedPathErrorMessage': icreateAnnotatedPathErrorMessage,
     'createPathErrorMessage': icreatePathErrorMessage,
-    'createPathMessageCreator': icreatePathMessageCreator,
+    'createPathMessage': icreatePathMessage,
 }
