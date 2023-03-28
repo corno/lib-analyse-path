@@ -10,13 +10,13 @@ export namespace A {
     
     export type createAnnotatedPathErrorMessage = ($d: {
         readonly 'getArrayAsString': g_tostring.SYNC.A.F.GetArrayAsString
-    }, $se: null) => g_this.SYNC.A.F.CreateAnnotatedPathErrorMessage
+    }, ) => g_this.SYNC.A.F.CreateAnnotatedPathErrorMessage
     
     export type createPathErrorMessage = () => g_this.SYNC.A.F.CreatePathErrorMessage
     
     export type createPathMessage = ($d: {
         readonly 'getArrayAsString': g_tostring.SYNC.A.F.GetArrayAsString
-    }, $se: null) => g_this.SYNC.A.F.CreatePathMessage
+    }, ) => g_this.SYNC.A.F.CreatePathMessage
 }
 
 export type API = {

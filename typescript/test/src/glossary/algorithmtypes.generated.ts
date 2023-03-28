@@ -10,11 +10,4 @@ export namespace ASYNC {
     export namespace A {}
 }
 
-export namespace SYNC {
-    
-    export namespace I {}
-    
-    export namespace IW {}
-    
-    export namespace A {}
-}
+export namespace SYNC {}
