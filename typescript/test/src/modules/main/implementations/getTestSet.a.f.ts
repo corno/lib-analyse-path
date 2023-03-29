@@ -1,6 +1,6 @@
 
 import * as pm from "pareto-core-state"
-import * as pl from "pareto-core-lib"
+import * as pl from 'pareto-core-lib'
 
 import * as mtest from "lib-pareto-test"
 import * as mpath from "res-pareto-path"

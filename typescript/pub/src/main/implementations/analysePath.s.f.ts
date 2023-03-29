@@ -1,5 +1,5 @@
 
-import * as pl from "pareto-core-lib"
+import * as pl from 'pareto-core-lib'
 import * as pm from "pareto-core-state"
 
 import * as g_this from "../glossary"
